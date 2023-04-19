@@ -5,4 +5,5 @@ spring:
         registration:
           facebook:
             client-id: 758771059047172
-            client-secret: 101e84babba34393e603ada05e6b7c5f
+            #everytime I have to change the secret for security purposes, you can do that on https://developers.facebook.com/apps/758771059047172/settings/basic/
+            client-secret: 
