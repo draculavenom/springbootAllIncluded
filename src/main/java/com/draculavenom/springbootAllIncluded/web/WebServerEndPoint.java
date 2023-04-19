@@ -1,12 +1,14 @@
 package com.draculavenom.springbootAllIncluded.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/testingSecurity")
 public class WebServerEndPoint {
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public String home() {
 		return "<h1>Welcome</h1>";
 	}

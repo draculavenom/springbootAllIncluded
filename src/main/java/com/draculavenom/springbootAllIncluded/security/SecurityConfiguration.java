@@ -65,10 +65,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/admin").hasRole("ADMIN")
-			.antMatchers("/user").hasAnyRole("ADMIN", "USER")
+			.antMatchers("/testingSecurity/admin").hasRole("ADMIN")
+			.antMatchers("/testingSecurity/user").hasAnyRole("ADMIN", "USER")
+			.antMatchers("/testingSecurity").permitAll()
 			.antMatchers("/").permitAll()
-			.and().formLogin()
+			//---h2-console allowed by the following instructions
+			.antMatchers("/h2-console/**").permitAll()
+			.and()
+			.formLogin()
+			.and()
+			.csrf().ignoringAntMatchers("/h2-console/**")
+			.and()
+	        .headers().frameOptions().sameOrigin()
+	        //---h2-console allowed by the previous instructions
 			;
 	}
 }
